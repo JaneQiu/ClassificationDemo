@@ -20,7 +20,12 @@ android {
 }
 
 dependencies {
+    def AndroidSupportVersion = "23.1.1"
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
+    compile "com.android.support:percent:$AndroidSupportVersion"
+    compile "com.android.support:cardview-v7:$AndroidSupportVersion"
     compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:support-v4:23.3.0'
+    compile "com.android.support:recyclerview-v7:$AndroidSupportVersion"
 }

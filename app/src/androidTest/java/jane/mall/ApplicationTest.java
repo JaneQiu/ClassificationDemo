@@ -1,4 +1,4 @@
-package jane.classification;
+package jane.mall;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
