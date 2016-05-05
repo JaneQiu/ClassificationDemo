@@ -15,4 +15,9 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="RatioLayout">
+
+        <attr name="ratio" format="float" />
+    </declare-styleable>
+
 </resources>

@@ -6,9 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.simple.eventbus.Subscriber;
+
+import jane.mall.base.EventBusTag;
+import jane.mall.classification.ClassificationContentFragment;
+import jane.mall.classification.ClassificationMenuFragment;
+
 
 public class ClassificationFragment extends Fragment {
 
+    private int mCurrentCategoryId;
 
     public ClassificationFragment() {
 
@@ -27,6 +34,11 @@ public class ClassificationFragment extends Fragment {
         getChildFragmentManager().beginTransaction()
                 .replace(resId, Fragment.instantiate(getActivity(), clazz.getSimpleName()))
                 .commit();
+    }
+
+    @Subscriber(tag = EventBusTag.CATEGORY_ON_CHECKED_CHANGED_TAG)
+    public void onCategoryIdChecked(Integer id) {
+        mCurrentCategoryId = id;
     }
 
 

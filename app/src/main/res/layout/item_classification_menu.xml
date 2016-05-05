@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jane.mall.classification.RatioLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/category_menu_bg"
+    app:ratio="1.5">
+
+    <TextView
+        android:id="@+id/item_classification_menu_tv"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:background="@color/app_gray_background"
+        android:gravity="center"
+        android:textColor="@color/app_black"
+        android:textSize="15sp"
+        tools:text="中西药品"/>
+
+    <View
+        style="@style/app_line_weight"
+        android:layout_marginTop="59dp"/>
+
+</jane.mall.classification.RatioLayout>

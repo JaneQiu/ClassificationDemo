@@ -4,12 +4,27 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="app_green">#379945</color><!--全局绿-->
-    <color name="app_gray_line">#cccccc</color><!--线条灰-->
-    <color name="app_gray_background">#f3f3f3</color><!--全局背景-->
     <color name="text_tab_title_normal">#ff666666</color>
-    <color name="app_gray_text_summary">#999999</color><!--全局正文摘要-->
-    <color name="dividing">#D3D3D3</color><!--全局分割线-->
     <color name="gray_white">#FAFAFA</color>
+    <color name="app_green">#379945</color><!--全局绿-->
+    <color name="app_red">#da262b</color><!--全局红-->
+    <color name="app_yellow">#f9ee30</color><!--全局黄-->
+    <color name="app_black">#333333</color><!--全局黑-->
+    <color name="app_gray_text_title">#666666</color><!--全局标题正文-->
+    <color name="app_gray_text_summary">#999999</color><!--全局正文摘要-->
+    <color name="app_gray_classification">#EAEAEA</color><!--全局分类背景-->
+    <color name="app_gray_btn_background">#999999</color><!--全局灰色按钮背景-->
+    <color name="app_gray_background">#f3f3f3</color><!--全局背景-->
+    <color name="app_gray_line">#cccccc</color><!--线条灰-->
+    <color name="app_input_text">#cccccc</color><!--输入框默认颜色-->
     <color name="app_dark_gray">#666666</color>
+    <color name="app_text_black">#3a3a3a</color>
+    <color name="app_background_black">#eeeeee</color>
+    <color name="app_white">#ffffff</color>
+
+    <color name="dividing">#D3D3D3</color><!--全局分割线-->
+    <color name="gray_module_dividing">#F3F3F3</color><!--模块分割线-->
+    <color name="dull_red">#A96770</color>
+    <color name="withe_red">#F5B4BC</color>
+    <color name="address_bg">#ffffe8</color>
 </resources>

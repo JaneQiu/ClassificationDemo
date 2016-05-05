@@ -1,4 +1,4 @@
-package jane.mall;
+package jane.mall.classification;
 
 
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import jane.mall.R;
 
 /**
  * A simple {@link Fragment} subclass.
