@@ -7,12 +7,11 @@ import jane.mall.base.BaseModel;
 /**
  * @author Jane
  *         email 1024797370@qq.com
- *         date 2016/5/4 15:22
+ *         date 2016/5/5 11:52
  *         description
  *         vsersion
  */
-public class AllCategoryEntity extends BaseModel {
-
+public class ClassificationModel extends BaseModel {
 
     private List<CategoryLevel1Entity> returnObject;
 
@@ -29,6 +28,8 @@ public class AllCategoryEntity extends BaseModel {
 
     public void setReturnObject(List<CategoryLevel1Entity> returnObject) {
         this.returnObject = returnObject;
+
+
     }
 
     /**
@@ -98,7 +99,9 @@ public class AllCategoryEntity extends BaseModel {
 
     public static class CategoryLevel3Entity extends BaseSubCategoryEntity {
 
+
         private String categoryImg;
+
 
         public CategoryLevel3Entity() {
             mType = TYPE_LEVEL_3;
@@ -208,5 +211,6 @@ public class AllCategoryEntity extends BaseModel {
     public static class CategoryAdvListEntity {
 
     }
+
 
 }

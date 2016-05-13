@@ -2,10 +2,10 @@ package jane.mall.classification;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.util.Pair;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +18,7 @@ import java.util.List;
 import jane.mall.R;
 import jane.mall.base.BaseFragment;
 import jane.mall.base.EventBusTag;
+import jane.mall.util.log.KLog;
 
 /**
  * @author Jane
@@ -28,8 +29,16 @@ import jane.mall.base.EventBusTag;
  */
 public class ClassificationMenuFragment extends BaseFragment {
 
+    private static final String EXTRA_TITLE = "title";
+    private static final String TAG = ClassificationMenuFragment.class.getSimpleName();
     private ClassificationMenuAdapter mClassificationMenuAdapter;
     private RecyclerView mRecyclerView;
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Nullable
     @Override
@@ -45,9 +54,10 @@ public class ClassificationMenuFragment extends BaseFragment {
     }
 
     private void initView() {
+        KLog.d();
+        mRecyclerView = findView(R.id.frag_classification_rv);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView = findView(R.id.frag_classification_rv);
 
         mClassificationMenuAdapter = new ClassificationMenuAdapter(getActivity());
         mClassificationMenuAdapter.setOnMenuSelectedListener(new ClassificationMenuAdapter.OnMenuSelectedListener() {
@@ -59,10 +69,10 @@ public class ClassificationMenuFragment extends BaseFragment {
         mRecyclerView.setAdapter(mClassificationMenuAdapter);
     }
 
-
     @Subscriber(tag = EventBusTag.CATEGORY_MENU_DATA_RECEIVE_TAG)
     public void onReceiveData(Pair<Integer, List<AllCategoryEntity.BaseCategoryEntity>> pair) {
         Log.d("ClassificationMenuFragm", "pair.second.size():" + pair.second.size());
+        Log.d(TAG, "onReceiveData() called with: " + "pair = [" + pair + "]-----" + "[" + pair.second.size() + "]");
         mClassificationMenuAdapter.setData(pair.second);
         mClassificationMenuAdapter.setCurrentCategoryId(pair.first);
     }

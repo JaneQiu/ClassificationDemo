@@ -1,14 +1,15 @@
 package jane.mall.base;
 
+import java.io.Serializable;
+
 /**
  * @author Jane
  *         email 1024797370@qq.com
- *         date 2016/5/4 15:57
+ *         date 2016/5/13 11:56
  *         description
  *         vsersion
  */
-public class BaseEntity {
-
+public class BaseEntity implements Serializable {
     private int code;
     private String message;
 
@@ -26,14 +27,5 @@ public class BaseEntity {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-
-    @Override
-    public String toString() {
-        return "BaseEntity{" +
-                "code='" + code + '\'' +
-                ", message='" + message + '\'' +
-                '}';
     }
 }
