@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:layout_height="50dp"
+    android:orientation="horizontal">
+
+    <View
+        android:layout_width="1.5dp"
+        android:background="@color/app_green"
+        android:layout_marginLeft="20dp"
+        android:layout_height="15dp"/>
+
+    <TextView
+        android:id="@+id/item_classification_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:text="ssss"
+        android:textColor="@color/app_green"
+        android:textSize="15sp"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

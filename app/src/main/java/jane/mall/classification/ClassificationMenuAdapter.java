@@ -11,6 +11,7 @@ import java.util.List;
 import jane.mall.R;
 import jane.mall.base.BaseRecycleViewAdapter;
 import jane.mall.base.RecyclerViewHolder;
+import jane.mall.util.log.KLog;
 
 /**
  * @author Jane
@@ -34,12 +35,19 @@ public class ClassificationMenuAdapter<T> extends BaseRecycleViewAdapter<AllCate
 
     @Override
     protected View getItemView(LayoutInflater layoutInflater, ViewGroup parent, int viewType) {
-        return layoutInflater.inflate(R.layout.item_classification_menu, parent);
+        KLog.d();
+        return layoutInflater.inflate(R.layout.item_classification_menu, parent,false);
     }
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder viewHolder, int position) {
+
+        KLog.d();
+
         viewHolder.getHelper().setText(getItem(position).getCategoryName(), R.id.item_classification_menu_tv);
+
+        KLog.d(getItem(position).getCategoryName());
+
         viewHolder.itemView.setTag(getItem(position));
         viewHolder.itemView.setOnClickListener(this);
         if (position == mCheckedPosition) {
@@ -53,6 +61,8 @@ public class ClassificationMenuAdapter<T> extends BaseRecycleViewAdapter<AllCate
 
     @Override
     public void onClick(View v) {
+        KLog.d();
+
         Object tag = v.getTag();
         if (tag instanceof AllCategoryEntity.BaseCategoryEntity) {
             int categoryId = ((AllCategoryEntity.BaseCategoryEntity) tag).getCategoryId();
@@ -64,6 +74,8 @@ public class ClassificationMenuAdapter<T> extends BaseRecycleViewAdapter<AllCate
     }
 
     public void setCurrentCategoryId(int categoryId) {
+        KLog.d();
+
         if (mCheckedId == categoryId) {
             return;
         }

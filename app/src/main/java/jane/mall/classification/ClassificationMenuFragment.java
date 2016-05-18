@@ -2,10 +2,10 @@ package jane.mall.classification;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,16 +29,9 @@ import jane.mall.util.log.KLog;
  */
 public class ClassificationMenuFragment extends BaseFragment {
 
-    private static final String EXTRA_TITLE = "title";
     private static final String TAG = ClassificationMenuFragment.class.getSimpleName();
     private ClassificationMenuAdapter mClassificationMenuAdapter;
-    private RecyclerView mRecyclerView;
-
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+    private RecyclerView mMenuRecyclerView;
 
     @Nullable
     @Override
@@ -55,18 +48,19 @@ public class ClassificationMenuFragment extends BaseFragment {
 
     private void initView() {
         KLog.d();
-        mRecyclerView = findView(R.id.frag_classification_rv);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mMenuRecyclerView = findView(R.id.frag_classification_rv);
+        mClassificationMenuAdapter = new ClassificationMenuAdapter(getContext());
 
-        mClassificationMenuAdapter = new ClassificationMenuAdapter(getActivity());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        mMenuRecyclerView.setLayoutManager(linearLayoutManager);
+
         mClassificationMenuAdapter.setOnMenuSelectedListener(new ClassificationMenuAdapter.OnMenuSelectedListener() {
             @Override
             public void OnMenuSelected(int categoryId) {
                 EventBus.getDefault().post(categoryId, EventBusTag.CATEGORY_ON_CHECKED_CHANGED_TAG);
             }
         });
-        mRecyclerView.setAdapter(mClassificationMenuAdapter);
+        mMenuRecyclerView.setAdapter(mClassificationMenuAdapter);
     }
 
     @Subscriber(tag = EventBusTag.CATEGORY_MENU_DATA_RECEIVE_TAG)

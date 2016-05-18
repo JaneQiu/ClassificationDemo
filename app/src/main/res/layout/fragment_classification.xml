@@ -61,7 +61,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_gravity="left"
-                android:background="@color/app_gray_line"
+                android:background="@android:color/white"
                 app:layout_heightPercent="100%"
                 app:layout_widthPercent="30%">
 

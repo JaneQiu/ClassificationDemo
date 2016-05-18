@@ -48,15 +48,25 @@ public class ClassificationFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_classification, container, false);
+        EventBus.getDefault().register(this);
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mMultiStateView = findView(R.id.fragment_classification_ms);
+        replaceFragment(R.id.frag_classification_menu_fl, ClassificationMenuFragment.class);
+        replaceFragment(R.id.frag_classification_content_fl, ClassificationContentFragment.class);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mMultiStateView = findView(R.id.fragment_classification_ms);
-        replaceFragment(R.id.frag_classification_menu_fl, ClassificationMenuFragment.class);
-        replaceFragment(R.id.frag_classification_content_fl, ClassificationContentFragment.class);
+        loadData();
+    }
+
+    private void loadData() {
         getToken();
         getCategoryList();
     }
@@ -110,6 +120,7 @@ public class ClassificationFragment extends BaseFragment {
                     processAllCategoryEntity(result);
                 } else {
                     KLog.d("getCategoryList failure");
+                    mMultiStateView.showError();
                 }
 
             }
@@ -160,10 +171,9 @@ public class ClassificationFragment extends BaseFragment {
 
         }//遍历完毕
 
-        //如果mCurrentCategoryId == 0 ， 那么默认选中的是第一条
         if (mCurrentCategoryId == 0) {
             mCurrentCategoryId = baseCategoryEntities.get(0).getCategoryId();
-        } else {//如果mCurrentCategoryId ！= 0 ，但是现在没有这个id的内容，还是默认选中第一条
+        } else {
             if (Checker.isEmpty(mSubCategoryList.get(mCurrentCategoryId))) {
                 mCurrentCategoryId = baseCategoryEntities.get(0).getCategoryId();
             }
@@ -195,7 +205,6 @@ public class ClassificationFragment extends BaseFragment {
         //显示内容
         KLog.d(TAG, "showContent");
         mMultiStateView.showContent();
-
     }
 
     public void replaceFragment(int resId, Class clazz) {
@@ -210,4 +219,9 @@ public class ClassificationFragment extends BaseFragment {
     }
 
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 }
